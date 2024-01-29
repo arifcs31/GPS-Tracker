@@ -1,0 +1,113 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Telemax.Shared.ClientDb.Constants</name>
+    </assembly>
+    <members>
+        <member name="T:Telemax.Shared.ClientDb.Constants.FieldLengths">
+            <summary>
+            Defines field lengths for the various columns.
+            </summary>
+        </member>
+        <member name="F:Telemax.Shared.ClientDb.Constants.FieldLengths.AlertPolicy_Name">
+            <summary>
+            Defines maximal length of the alert policy name.
+            </summary>
+        </member>
+        <member name="F:Telemax.Shared.ClientDb.Constants.FieldLengths.AlertPolicy_Description">
+            <summary>
+            Defines maximal length of the alert policy description.
+            </summary>
+        </member>
+        <member name="F:Telemax.Shared.ClientDb.Constants.FieldLengths.Company_Name">
+            <summary>
+            Defines maximal length of the company name.
+            </summary>
+        </member>
+        <member name="F:Telemax.Shared.ClientDb.Constants.FieldLengths.DeviceInfoTrackerRecord_UnitVersions_Hardware">
+            <summary>
+            Defines maximal length of the unit versions hardware version.
+            </summary>
+        </member>
+        <member name="F:Telemax.Shared.ClientDb.Constants.FieldLengths.DeviceInfoTrackerRecord_UnitVersions_Platform">
+            <summary>
+            Defines maximal length of the unit versions platform version.
+            </summary>
+        </member>
+        <member name="F:Telemax.Shared.ClientDb.Constants.FieldLengths.DeviceInfoTrackerRecord_UnitVersions_Firmware">
+            <summary>
+            Defines maximal length of the unit versions firmware version.
+            </summary>
+        </member>
+        <member name="F:Telemax.Shared.ClientDb.Constants.FieldLengths.DeviceInfoTrackerRecord_UnitVersions_Software">
+            <summary>
+            Defines maximal length of the unit versions software version.
+            </summary>
+        </member>
+        <member name="F:Telemax.Shared.ClientDb.Constants.FieldLengths.Geofence_Name">
+            <summary>
+            Defines maximal length of the geofence name.
+            </summary>
+        </member>
+        <member name="F:Telemax.Shared.ClientDb.Constants.FieldLengths.Geofence_Description">
+            <summary>
+            Defines maximal length of the geofence description.
+            </summary>
+        </member>
+        <member name="F:Telemax.Shared.ClientDb.Constants.FieldLengths.NetworkInfoTrackerRecord_Operator">
+            <summary>
+            Defines maximal length of the network info record operator.
+            </summary>
+        </member>
+        <member name="F:Telemax.Shared.ClientDb.Constants.FieldLengths.NetworkInfoTrackerRecord_Technology">
+            <summary>
+            Defines maximal length of the network info record technology.
+            </summary>
+        </member>
+        <member name="F:Telemax.Shared.ClientDb.Constants.FieldLengths.NetworkInfoTrackerRecord_Band">
+            <summary>
+            Defines maximal length of the network info record band.
+            </summary>
+        </member>
+        <member name="F:Telemax.Shared.ClientDb.Constants.FieldLengths.NetworkInfoTrackerRecord_Imsi">
+            <summary>
+            Defines maximal length of the network info record IMSI.
+            </summary>
+        </member>
+        <member name="F:Telemax.Shared.ClientDb.Constants.FieldLengths.NetworkInfoTrackerRecord_IccId">
+            <summary>
+            Defines maximal length of the network info record ICCID.
+            </summary>
+        </member>
+        <member name="F:Telemax.Shared.ClientDb.Constants.FieldLengths.Vehicle_Name">
+            <summary>
+            Defines maximal length of the vehicle name.
+            </summary>
+        </member>
+        <member name="F:Telemax.Shared.ClientDb.Constants.FieldLengths.Vehicle_Vin">
+            <summary>
+            Defines maximal length of the vehicle VIN number.
+            </summary>
+        </member>
+        <member name="F:Telemax.Shared.ClientDb.Constants.FieldLengths.Vehicle_NumberPlate">
+            <summary>
+            Defines maximal length of the vehicle number plate.
+            </summary>
+        </member>
+        <member name="T:Telemax.Shared.ClientDb.Constants.TimeSpans">
+            <summary>
+            Defines various time intervals (like data retention period, chunk size along the time dimension, etc...)
+            </summary>
+        </member>
+        <member name="F:Telemax.Shared.ClientDb.Constants.TimeSpans.DefaultTimeDimensionChunkSize">
+            <summary>
+            Default time dimension chunk size.
+            </summary>
+        </member>
+        <member name="F:Telemax.Shared.ClientDb.Constants.TimeSpans.DefaultRetentionPeriod">
+            <summary>
+            Default retention period.
+            </summary>
+        </member>
+    </members>
+</doc>

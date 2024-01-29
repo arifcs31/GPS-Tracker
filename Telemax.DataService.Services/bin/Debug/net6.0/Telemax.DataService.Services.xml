@@ -1,0 +1,450 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Telemax.DataService.Services</name>
+    </assembly>
+    <members>
+        <member name="T:Telemax.DataService.Services.GenericMessageHandler">
+            <summary>
+            Implements <see cref="T:Telemax.DataService.Interfaces.IMessageHandler"/> which delegates message handling to the specific message handlers.
+            </summary>
+        </member>
+        <member name="F:Telemax.DataService.Services.GenericMessageHandler._messageHandlerResolver">
+            <summary>
+            Message handler resolver.
+            </summary>
+        </member>
+        <member name="F:Telemax.DataService.Services.GenericMessageHandler._logger">
+            <summary>
+            Logger.
+            </summary>
+        </member>
+        <member name="M:Telemax.DataService.Services.GenericMessageHandler.#ctor(Telemax.DataService.Services.GenericMessageHandler.Resolver,Microsoft.Extensions.Logging.ILogger{Telemax.DataService.Services.GenericMessageHandler})">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="messageHandlerResolver">Message handler resolver.</param>
+            <param name="logger">Logger.</param>
+        </member>
+        <member name="M:Telemax.DataService.Services.GenericMessageHandler.HandleAsync(Telemax.DataService.Contracts.Message,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:Telemax.DataService.Services.GenericMessageHandler.Resolver">
+            <summary>
+            Resolves message handler for the given message.
+            </summary>
+            <param name="message">Message to resolve message handler for.</param>
+            <returns>Specific message handler.</returns>
+        </member>
+        <member name="T:Telemax.DataService.Services.CheckpointPolicy">
+            <summary>
+            Represents checkpoint policy.
+            </summary>
+        </member>
+        <member name="F:Telemax.DataService.Services.CheckpointPolicy._checkpointSize">
+            <summary>
+            Maximal amount of "unchecked" messages.
+            </summary>
+        </member>
+        <member name="F:Telemax.DataService.Services.CheckpointPolicy._checkpointInterval">
+            <summary>
+            Time interval between checkpoints.
+            </summary>
+        </member>
+        <member name="M:Telemax.DataService.Services.CheckpointPolicy.#ctor(System.Int32,System.TimeSpan)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="checkpointSize">Maximal amount of "unchecked" messages.</param>
+            <param name="checkpointInterval">Time interval between checkpoints.</param>
+        </member>
+        <member name="P:Telemax.DataService.Services.CheckpointPolicy.CheckpointSize">
+            <summary>
+            Gets current amount of unchecked messages.
+            </summary>
+        </member>
+        <member name="P:Telemax.DataService.Services.CheckpointPolicy.LastCheckpointDate">
+            <summary>
+            Gets last checkpoint date.
+            </summary>
+        </member>
+        <member name="M:Telemax.DataService.Services.CheckpointPolicy.Increment">
+            <summary>
+            Increments amount of "unchecked" messages.
+            Resets amount of "unchecked" messages and last checkpoint date in case next checkpoint is reached.
+            </summary>
+            <returns>True in case checkpoint update should be done, false otherwise.</returns>
+        </member>
+        <member name="M:Telemax.DataService.Services.CheckpointPolicy.Reset">
+            <summary>
+            Resets policy state.
+            </summary>
+        </member>
+        <member name="T:Telemax.DataService.Services.EventHubMessageConsumer">
+            <summary>
+            Implements <see cref="T:Telemax.DataService.Interfaces.IMessageConsumer"/> by consuming messages from the Azure Event Hub.
+            </summary>
+        </member>
+        <member name="F:Telemax.DataService.Services.EventHubMessageConsumer._config">
+            <summary>
+            Service config.
+            </summary>
+        </member>
+        <member name="F:Telemax.DataService.Services.EventHubMessageConsumer._logger">
+            <summary>
+            Logger.
+            </summary>
+        </member>
+        <member name="F:Telemax.DataService.Services.EventHubMessageConsumer._checkpointPolicy">
+            <summary>
+            Checkpoint policy.
+            </summary>
+        </member>
+        <member name="F:Telemax.DataService.Services.EventHubMessageConsumer._processMessageAsync">
+            <summary>
+            Message processing callback (set by <see cref="M:Telemax.DataService.Services.EventHubMessageConsumer.ConsumeMessagesAsync(Telemax.DataService.Interfaces.ProcessMessageAsync,System.Threading.CancellationToken)"/>).
+            </summary>
+        </member>
+        <member name="M:Telemax.DataService.Services.EventHubMessageConsumer.#ctor(Microsoft.Extensions.Options.IOptions{Telemax.DataService.Services.EventHubMessageConsumer.Configuration},Microsoft.Extensions.Logging.ILogger{Telemax.DataService.Services.EventHubMessageConsumer})">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="options">Options.</param>
+            <param name="logger">Logger.</param>
+        </member>
+        <member name="M:Telemax.DataService.Services.EventHubMessageConsumer.ConsumeMessagesAsync(Telemax.DataService.Interfaces.ProcessMessageAsync,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Telemax.DataService.Services.EventHubMessageConsumer.ClientOnProcessEventAsync(Azure.Messaging.EventHubs.Processor.ProcessEventArgs)">
+            <summary>
+            Handles message event.
+            </summary>
+            <param name="arg">Event arguments.</param>
+            <returns>Void task.</returns>
+        </member>
+        <member name="M:Telemax.DataService.Services.EventHubMessageConsumer.ClientOnPartitionInitializingAsync(Azure.Messaging.EventHubs.Processor.PartitionInitializingEventArgs)">
+            <summary>
+            Handles partition initialization event.
+            </summary>
+            <param name="arg">Event arguments.</param>
+            <returns>Void task.</returns>
+        </member>
+        <member name="M:Telemax.DataService.Services.EventHubMessageConsumer.ClientOnPartitionClosingAsync(Azure.Messaging.EventHubs.Processor.PartitionClosingEventArgs)">
+            <summary>
+            Handles partition closing event.
+            </summary>
+            <param name="arg">Event arguments.</param>
+            <returns>Void task.</returns>
+        </member>
+        <member name="M:Telemax.DataService.Services.EventHubMessageConsumer.ClientOnProcessErrorAsync(Azure.Messaging.EventHubs.Processor.ProcessErrorEventArgs)">
+            <summary>
+            Handles error event.
+            </summary>
+            <param name="arg">Event arguments.</param>
+            <returns>Void task.</returns>
+        </member>
+        <member name="M:Telemax.DataService.Services.EventHubMessageConsumer.TryDeserializeMessage(Azure.Messaging.EventHubs.Processor.ProcessEventArgs,Telemax.DataService.Contracts.Message@)">
+            <summary>
+            Tries to retrieve tracker message from the given process event arguments.
+            </summary>
+            <param name="arg">Process event arguments.</param>
+            <param name="message">Retrieved message.</param>
+            <returns>True if message was successfully retrieved, false otherwise.</returns>
+        </member>
+        <member name="M:Telemax.DataService.Services.EventHubMessageConsumer.CheckpointAsync(Azure.Messaging.EventHubs.Processor.ProcessEventArgs)">
+            <summary>
+            
+            </summary>
+            <param name="arg"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Telemax.DataService.Services.EventHubMessageConsumer.Configuration">
+            <summary>
+            Represents service configuration.
+            </summary>
+        </member>
+        <member name="P:Telemax.DataService.Services.EventHubMessageConsumer.Configuration.EventHubConnStr">
+            <summary>
+            Gets or sets the event hubs namespace connection string.
+            </summary>
+        </member>
+        <member name="P:Telemax.DataService.Services.EventHubMessageConsumer.Configuration.EventHubName">
+            <summary>
+            Gets or sets event hub name.
+            </summary>
+        </member>
+        <member name="P:Telemax.DataService.Services.EventHubMessageConsumer.Configuration.EventHubConsumerGroup">
+            <summary>
+            Gets or sets event hub consumer group.
+            </summary>
+        </member>
+        <member name="P:Telemax.DataService.Services.EventHubMessageConsumer.Configuration.BlobStorageConnStr">
+            <summary>
+            Gets or sets blob storage connection string.
+            </summary>
+        </member>
+        <member name="P:Telemax.DataService.Services.EventHubMessageConsumer.Configuration.BlobContainerName">
+            <summary>
+            Gets or sets the name of the blob container used to store checkpoints.
+            </summary>
+        </member>
+        <member name="P:Telemax.DataService.Services.EventHubMessageConsumer.Configuration.CheckpointSize">
+            <summary>
+            Gets or sets the maximal amount of messages between checkpoints.
+            </summary>
+        </member>
+        <member name="P:Telemax.DataService.Services.EventHubMessageConsumer.Configuration.CheckpointInterval">
+            <summary>
+            Gets or sets the maximal amount of time between checkpoints.
+            </summary>
+        </member>
+        <member name="P:Telemax.DataService.Services.EventHubMessageConsumer.Configuration.StopTimeout">
+            <summary>
+            Gets or sets service stop timeout.
+            </summary>
+        </member>
+        <member name="T:Telemax.DataService.Services.FakeMessageConsumer">
+            <summary>
+            Implements <see cref="T:Telemax.DataService.Interfaces.IMessageConsumer"/> by generating messages using given factory.
+            </summary>
+        </member>
+        <member name="F:Telemax.DataService.Services.FakeMessageConsumer._config">
+            <summary>
+            Service config.
+            </summary>
+        </member>
+        <member name="F:Telemax.DataService.Services.FakeMessageConsumer._messageFactory">
+            <summary>
+            Message factory function.
+            </summary>
+        </member>
+        <member name="M:Telemax.DataService.Services.FakeMessageConsumer.#ctor(Microsoft.Extensions.Options.IOptions{Telemax.DataService.Services.FakeMessageConsumer.Configuration},System.Func{System.Int64,Telemax.DataService.Contracts.Message})">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="options">Options.</param>
+            <param name="messageFactory">Message factory function, accepts message index.</param>
+        </member>
+        <member name="M:Telemax.DataService.Services.FakeMessageConsumer.ConsumeMessagesAsync(Telemax.DataService.Interfaces.ProcessMessageAsync,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:Telemax.DataService.Services.FakeMessageConsumer.Configuration">
+            <summary>
+            Represents service configuration.
+            </summary>
+        </member>
+        <member name="P:Telemax.DataService.Services.FakeMessageConsumer.Configuration.MessagePopulationInterval">
+            <summary>
+            Gets or sets message population interval.
+            </summary>
+        </member>
+        <member name="P:Telemax.DataService.Services.FakeMessageConsumer.Configuration.CheckpointSize">
+            <summary>
+            Gets or sets the maximal amount of messages between checkpoints.
+            </summary>
+        </member>
+        <member name="P:Telemax.DataService.Services.FakeMessageConsumer.Configuration.CheckpointInterval">
+            <summary>
+            Gets or sets the maximal amount of time between checkpoints.
+            </summary>
+        </member>
+        <member name="T:Telemax.DataService.Services.MessageProcessingBroker">
+            <summary>
+            Performs message processing using <see cref="T:Telemax.DataService.Interfaces.IMessageConsumer"/> and <see cref="T:Telemax.DataService.Interfaces.IMessageProcessor"/>.
+            </summary>
+        </member>
+        <member name="F:Telemax.DataService.Services.MessageProcessingBroker._config">
+            <summary>
+            Service configuration.
+            </summary>
+        </member>
+        <member name="F:Telemax.DataService.Services.MessageProcessingBroker._messageConsumer">
+            <summary>
+            Message consumer.
+            </summary>
+        </member>
+        <member name="F:Telemax.DataService.Services.MessageProcessingBroker._messageProcessor">
+            <summary>
+            Message processor.
+            </summary>
+        </member>
+        <member name="F:Telemax.DataService.Services.MessageProcessingBroker._logger">
+            <summary>
+            Logger.
+            </summary>
+        </member>
+        <member name="F:Telemax.DataService.Services.MessageProcessingBroker._lastProcessDate">
+            <summary>
+            Latest date any message was processed.
+            </summary>
+        </member>
+        <member name="M:Telemax.DataService.Services.MessageProcessingBroker.#ctor(Microsoft.Extensions.Options.IOptions{Telemax.DataService.Services.MessageProcessingBroker.Configuration},Telemax.DataService.Interfaces.IMessageConsumer,Telemax.DataService.Interfaces.IMessageProcessor,Microsoft.Extensions.Logging.ILogger{Telemax.DataService.Services.MessageProcessingBroker})">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="options">Service options.</param>
+            <param name="messageConsumer">Message consumer.</param>
+            <param name="messageProcessor">Message processor.</param>
+            <param name="logger">Logger.</param>
+        </member>
+        <member name="M:Telemax.DataService.Services.MessageProcessingBroker.ProcessAsync(System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Telemax.DataService.Services.MessageProcessingBroker.ConsumeAsync(System.Threading.CancellationToken)">
+            <summary>
+            Consumes messages using <see cref="T:Telemax.DataService.Interfaces.IMessageConsumer"/>.
+            </summary>
+            <param name="ct">Cancellation token.</param>
+            <returns>Void task.</returns>
+        </member>
+        <member name="M:Telemax.DataService.Services.MessageProcessingBroker.FlushOnIdleAsync(System.Threading.CancellationToken)">
+            <summary>
+            Periodically flushes messages buffered by <see cref="T:Telemax.DataService.Interfaces.IMessageProcessor"/>.
+            </summary>
+            <param name="ct">Cancellation token.</param>
+            <returns>Void task.</returns>
+        </member>
+        <member name="M:Telemax.DataService.Services.MessageProcessingBroker.ProcessMessageAsync(Telemax.DataService.Contracts.Message,System.Boolean,System.Threading.CancellationToken)">
+            <summary>
+            Processes given message in a safe manner, optionally flushes buffered messages.
+            </summary>
+            <param name="message">Message to process.</param>
+            <param name="flush">Flag which determines if buffered messages should be processed immediately.</param>
+            <param name="ct">Cancellation token.</param>
+            <returns>Void task.</returns>
+        </member>
+        <member name="T:Telemax.DataService.Services.MessageProcessingBroker.Configuration">
+            <summary>
+            Represents service configuration.
+            </summary>
+        </member>
+        <member name="P:Telemax.DataService.Services.MessageProcessingBroker.Configuration.IdleToFlush">
+            <summary>
+            Gets or sets idle duration before forced flush of the buffered messages.
+            </summary>
+        </member>
+        <member name="T:Telemax.DataService.Services.MessageProcessor">
+            <summary>
+            Implements <see cref="T:Telemax.DataService.Interfaces.IMessageProcessor"/> which process messages in parallel.
+            Under the hood it's buffers certain amount of messages and process them in parallel using multiple workers.
+            Buffered messages processed in two cases:
+             - Message buffer became full after another call of <see cref="M:Telemax.DataService.Services.MessageProcessor.ProcessAsync(Telemax.DataService.Contracts.Message,System.Threading.CancellationToken)"/> method;
+             - Message processing is requested from outside by calling <see cref="M:Telemax.DataService.Services.MessageProcessor.FlushAsync(System.Threading.CancellationToken)"/> method;
+            </summary>
+        </member>
+        <member name="F:Telemax.DataService.Services.MessageProcessor._config">
+            <summary>
+            Service configuration.
+            </summary>
+        </member>
+        <member name="F:Telemax.DataService.Services.MessageProcessor._serviceScopeFactory">
+            <summary>
+            Service scope factory.
+            </summary>
+        </member>
+        <member name="F:Telemax.DataService.Services.MessageProcessor._messageDeduplicator">
+            <summary>
+            Message deduplicator.
+            </summary>
+        </member>
+        <member name="F:Telemax.DataService.Services.MessageProcessor._logger">
+            <summary>
+            Logger.
+            </summary>
+        </member>
+        <member name="F:Telemax.DataService.Services.MessageProcessor._processingLock">
+            <summary>
+            Semaphore used to synchronize access to the message buffer.
+            </summary>
+        </member>
+        <member name="F:Telemax.DataService.Services.MessageProcessor._messages">
+            <summary>
+            Message buffer, messages stored here until partitioning and processing.
+            </summary>
+        </member>
+        <member name="F:Telemax.DataService.Services.MessageProcessor._messagesPerTracker">
+            <summary>
+            Map of tracker IDs to amounts of corresponding tracker messages.
+            </summary>
+        </member>
+        <member name="F:Telemax.DataService.Services.MessageProcessor._messageComparer">
+            <summary>
+            Comparer used to split list of buffered messages to relatively uniform partitions.
+            </summary>
+        </member>
+        <member name="F:Telemax.DataService.Services.MessageProcessor._partitions">
+            <summary>
+            Underlying partitions storage.
+            </summary>
+        </member>
+        <member name="M:Telemax.DataService.Services.MessageProcessor.#ctor(Microsoft.Extensions.Options.IOptions{Telemax.DataService.Services.MessageProcessor.Configuration},Microsoft.Extensions.DependencyInjection.IServiceScopeFactory,Telemax.DataService.Interfaces.IMessageDeduplicator,Microsoft.Extensions.Logging.ILogger{Telemax.DataService.Services.MessageProcessor})">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="options">Service options.</param>
+            <param name="serviceScopeFactory">Service scope factory.</param>
+            <param name="messageDeduplicator">Message deduplicator.</param>
+            <param name="logger">Logger.</param>
+        </member>
+        <member name="M:Telemax.DataService.Services.MessageProcessor.ProcessAsync(Telemax.DataService.Contracts.Message,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Telemax.DataService.Services.MessageProcessor.FlushAsync(System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Telemax.DataService.Services.MessageProcessor.ProcessBufferedMessagesAsync(System.Boolean,System.Threading.CancellationToken)">
+            <summary>
+            Processes buffered messages.
+            </summary>
+            <param name="byDemand">Flag which determines if processing started by demand.</param>
+            <param name="ct">Cancellation token.</param>
+            <returns>Void task.</returns>
+        </member>
+        <member name="M:Telemax.DataService.Services.MessageProcessor.ProcessPartitionAsync(System.Collections.Generic.IEnumerable{Telemax.DataService.Contracts.Message},System.Threading.CancellationToken)">
+            <summary>
+            Processes messages partition.
+            </summary>
+            <param name="messages">Message partition to process.</param>
+            <param name="ct">Cancellation token.</param>
+            <returns>Void task.</returns>
+        </member>
+        <member name="T:Telemax.DataService.Services.MessageProcessor.MessageComparer">
+            <summary>
+            Comparer used to sort messages before splitting them to the partitions:
+            Sorting should be done according to the next requirements:
+             - All the messages for the specific tracker should be owned by one and only one partition;
+             - Messages of the specific tracker should come together (in one line);
+             - Older messages should come first.
+            </summary>
+        </member>
+        <member name="F:Telemax.DataService.Services.MessageProcessor.MessageComparer._messagesPerTracker">
+            <summary>
+            Map of tracker IDs to amounts of corresponding tracker messages.
+            </summary>
+        </member>
+        <member name="M:Telemax.DataService.Services.MessageProcessor.MessageComparer.#ctor(System.Collections.Generic.IReadOnlyDictionary{System.Int64,System.Int32})">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="messagesPerTracker">Map of tracker IDs to amounts of corresponding tracker messages.</param>
+        </member>
+        <member name="M:Telemax.DataService.Services.MessageProcessor.MessageComparer.Compare(Telemax.DataService.Contracts.Message,Telemax.DataService.Contracts.Message)">
+            <inheritdoc />
+        </member>
+        <member name="T:Telemax.DataService.Services.MessageProcessor.Configuration">
+            <summary>
+            Represents service configuration.
+            </summary>
+        </member>
+        <member name="P:Telemax.DataService.Services.MessageProcessor.Configuration.BufferSize">
+            <summary>
+            Gets or sets buffer size.
+            </summary>
+        </member>
+        <member name="P:Telemax.DataService.Services.MessageProcessor.Configuration.DegreeOfParallelism">
+            <summary>
+            Gets or sets the amount of threads used to process buffered messages.
+            </summary>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,36 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "Telemax.DataService.Interfaces/1.0.0": {
+        "dependencies": {
+          "Telemax.DataService.Contracts": "1.0.0"
+        },
+        "runtime": {
+          "Telemax.DataService.Interfaces.dll": {}
+        }
+      },
+      "Telemax.DataService.Contracts/1.0.0": {
+        "runtime": {
+          "Telemax.DataService.Contracts.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Telemax.DataService.Interfaces/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Telemax.DataService.Contracts/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

@@ -1,0 +1,96 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Telemax.DataService.Interfaces</name>
+    </assembly>
+    <members>
+        <member name="T:Telemax.DataService.Interfaces.IMessageConsumer">
+            <summary>
+            Represents service which consumes tracker messages from implementation-defined source.
+            </summary>
+        </member>
+        <member name="M:Telemax.DataService.Interfaces.IMessageConsumer.ConsumeMessagesAsync(Telemax.DataService.Interfaces.ProcessMessageAsync,System.Threading.CancellationToken)">
+            <summary>
+            Implements long-running message consumption logic.
+            </summary>
+            <param name="processMessageAsync">Message processing callback.</param>
+            <param name="ct">Cancellation token.</param>
+            <returns>Void task.</returns>
+        </member>
+        <member name="T:Telemax.DataService.Interfaces.ProcessMessageAsync">
+            <summary>
+            Processes the given message.
+            </summary>
+            <param name="message">Message to process.</param>
+            <param name="force">Flag which forces requires message to be processed immediately (without bufferization).</param>
+            <param name="ct">Cancellation token.</param>
+            <returns>Void task.</returns>
+        </member>
+        <member name="T:Telemax.DataService.Interfaces.IMessageDeduplicator">
+            <summary>
+            Represents service which allows to check if the specific tracker message was processed already.
+            </summary>
+        </member>
+        <member name="M:Telemax.DataService.Interfaces.IMessageDeduplicator.IsProcessedAsync(Telemax.DataService.Contracts.Message,System.Threading.CancellationToken)">
+            <summary>
+            Check if the given message was processed.
+            </summary>
+            <param name="message">Message to check.</param>
+            <param name="ct">Cancellation token.</param>
+            <returns>Task which resolves with true in case given message was processed.</returns>
+        </member>
+        <member name="M:Telemax.DataService.Interfaces.IMessageDeduplicator.MarkAsProcessedAsync(Telemax.DataService.Contracts.Message,System.Threading.CancellationToken)">
+            <summary>
+            Marks message as processed.
+            </summary>
+            <param name="message">Message.</param>
+            <param name="ct">Cancellation token.</param>
+            <returns>Void task.</returns>
+        </member>
+        <member name="T:Telemax.DataService.Interfaces.IMessageHandler">
+            <summary>
+            Represents service which actually handles tracker messages: updates client data, fires various alerts, etc...
+            </summary>
+        </member>
+        <member name="M:Telemax.DataService.Interfaces.IMessageHandler.HandleAsync(Telemax.DataService.Contracts.Message,System.Threading.CancellationToken)">
+            <summary>
+            Handles given message.
+            </summary>
+            <param name="message">Message to handle.</param>
+            <param name="ct">Cancellation token.</param>
+            <returns>Void task.</returns>
+        </member>
+        <member name="T:Telemax.DataService.Interfaces.IMessageProcessingBroker">
+            <summary>
+            Performs message processing which involves communication of several separate services.
+            </summary>
+        </member>
+        <member name="M:Telemax.DataService.Interfaces.IMessageProcessingBroker.ProcessAsync(System.Threading.CancellationToken)">
+            <summary>
+            Processes messages.
+            </summary>
+            <param name="ct">Cancellation token.</param>
+            <returns>Void task.</returns>
+        </member>
+        <member name="T:Telemax.DataService.Interfaces.IMessageProcessor">
+            <summary>
+            Represents message processor, intended to deal with deduplication, schedule message handling, etc.
+            </summary>
+        </member>
+        <member name="M:Telemax.DataService.Interfaces.IMessageProcessor.ProcessAsync(Telemax.DataService.Contracts.Message,System.Threading.CancellationToken)">
+            <summary>
+            Processes the given message.
+            </summary>
+            <param name="message">Message to process.</param>
+            <param name="ct">Cancellation token.</param>
+            <returns>Void task.</returns>
+        </member>
+        <member name="M:Telemax.DataService.Interfaces.IMessageProcessor.FlushAsync(System.Threading.CancellationToken)">
+            <summary>
+            Processes buffered messages immediately.
+            </summary>
+            <param name="ct">Cancellation token.</param>
+            <returns>Void task.</returns>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,277 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Telemax.DataService.Contracts</name>
+    </assembly>
+    <members>
+        <member name="T:Telemax.DataService.Contracts.Message">
+            <summary>
+            Represents abstract tracker message.
+            </summary>
+        </member>
+        <member name="P:Telemax.DataService.Contracts.Message.TrackerId">
+            <summary>
+            Gets or sets the tracker ID (IMEI).
+            </summary>
+        </member>
+        <member name="P:Telemax.DataService.Contracts.Message.ReceiveDate">
+            <summary>
+            Gets or sets a moment in time (UTC) when the message was received by the service.
+            Among the other this property is used by the deduplication logic on the consumer side.
+            </summary>
+        </member>
+        <member name="P:Telemax.DataService.Contracts.Message.TrackerDate">
+            <summary>
+            Gets or sets a moment in time (UTC) when the data was retrieved by the tracker.
+            </summary>
+        </member>
+        <member name="T:Telemax.DataService.Contracts.DataMessage">
+            <summary>
+            Represents tracker data message.
+            </summary>
+        </member>
+        <member name="P:Telemax.DataService.Contracts.DataMessage.AlarmType">
+            <summary>
+            Gets the alarm type.
+            </summary>
+        </member>
+        <member name="P:Telemax.DataService.Contracts.DataMessage.IsIgnitionOn">
+            <summary>
+            Gets the flag which determines if the ignition is ON.
+            </summary>
+        </member>
+        <member name="P:Telemax.DataService.Contracts.DataMessage.GnssLocation">
+            <summary>
+            Gets the GNSS location.
+            </summary>
+        </member>
+        <member name="P:Telemax.DataService.Contracts.DataMessage.Speed">
+            <summary>
+            Gets the movement speed.
+            </summary>
+        </member>
+        <member name="P:Telemax.DataService.Contracts.DataMessage.Odometer">
+            <summary>
+            Gets the odometer value, meters.
+            </summary>
+        </member>
+        <member name="P:Telemax.DataService.Contracts.DataMessage.Accelerometer">
+            <summary>
+            Gets accelerometer value (m/s^2).
+            </summary>
+        </member>
+        <member name="P:Telemax.DataService.Contracts.DataMessage.Gyroscope">
+            <summary>
+            Gets the gyroscope value (degrees/second).
+            </summary>
+        </member>
+        <member name="T:Telemax.DataService.Contracts.AlarmType">
+            <summary>
+            Enumerates alert types.
+            </summary>
+        </member>
+        <member name="F:Telemax.DataService.Contracts.AlarmType.None">
+            <summary>
+            No alarm.
+            </summary>
+        </member>
+        <member name="T:Telemax.DataService.Contracts.GnssLocation">
+            <summary>
+            Represents GNSS location data.
+            </summary>
+        </member>
+        <member name="P:Telemax.DataService.Contracts.GnssLocation.Latitude">
+            <summary>
+            Gets or sets the latitude, degrees in range from -90 to 90.
+            </summary>
+        </member>
+        <member name="P:Telemax.DataService.Contracts.GnssLocation.Longitude">
+            <summary>
+            Gets or sets the longitude, degrees in range from -180 to 180.
+            </summary>
+        </member>
+        <member name="P:Telemax.DataService.Contracts.GnssLocation.Altitude">
+            <summary>
+            Gets or sets the altitude, meters.
+            </summary>
+        </member>
+        <member name="P:Telemax.DataService.Contracts.GnssLocation.Direction">
+            <summary>
+            Gets or sets the movement direction as the CW angle (degrees) between the movement direction and north pole direction.
+            </summary>
+        </member>
+        <member name="T:Telemax.DataService.Contracts.Vector3">
+            <summary>
+            Represents 3D vector (float32).
+            </summary>
+        </member>
+        <member name="P:Telemax.DataService.Contracts.Vector3.X">
+            <summary>
+            Gets or sets the X value.
+            </summary>
+        </member>
+        <member name="P:Telemax.DataService.Contracts.Vector3.Y">
+            <summary>
+            Gets or sets the Y value.
+            </summary>
+        </member>
+        <member name="P:Telemax.DataService.Contracts.Vector3.Z">
+            <summary>
+            Gets or sets the Z value.
+            </summary>
+        </member>
+        <member name="T:Telemax.DataService.Contracts.DeviceInfoMessage">
+            <summary>
+            Represents message which stores device-related data.
+            </summary>
+        </member>
+        <member name="P:Telemax.DataService.Contracts.DeviceInfoMessage.Protocol">
+            <summary>
+            Gets or sets the communication protocol used by the device.
+            </summary>
+        </member>
+        <member name="P:Telemax.DataService.Contracts.DeviceInfoMessage.Device">
+            <summary>
+            Gets or sets device version info.
+            </summary>
+        </member>
+        <member name="P:Telemax.DataService.Contracts.DeviceInfoMessage.Controller">
+            <summary>
+            Gets or sets MCU (micro controller unit) version info.
+            </summary>
+        </member>
+        <member name="P:Telemax.DataService.Contracts.DeviceInfoMessage.Modem">
+            <summary>
+            Gets or sets model version info.
+            </summary>
+        </member>
+        <member name="P:Telemax.DataService.Contracts.DeviceInfoMessage.Obd2">
+            <summary>
+            Gets or sets OBD-II module version info.
+            </summary>
+        </member>
+        <member name="T:Telemax.DataService.Contracts.Protocol">
+            <summary>
+            Enumerates tracker protocols.
+            </summary>
+        </member>
+        <member name="F:Telemax.DataService.Contracts.Protocol.Topflytech25">
+            <summary>
+            Topflytech 0x250x25.
+            </summary>
+        </member>
+        <member name="F:Telemax.DataService.Contracts.Protocol.Topflytech26">
+            <summary>
+            Topflytech 0x260x26.
+            </summary>
+        </member>
+        <member name="F:Telemax.DataService.Contracts.Protocol.Topflytech27">
+            <summary>
+            Topflytech 0x270x27.
+            </summary>
+        </member>
+        <member name="T:Telemax.DataService.Contracts.UnitVersions">
+            <summary>
+            Represents list of version of some hardware unit.
+            </summary>
+        </member>
+        <member name="P:Telemax.DataService.Contracts.UnitVersions.Hardware">
+            <summary>
+            Gets or sets the hardware version.
+            </summary>
+        </member>
+        <member name="P:Telemax.DataService.Contracts.UnitVersions.Platform">
+            <summary>
+            Gets or sets the platform version.
+            </summary>
+        </member>
+        <member name="P:Telemax.DataService.Contracts.UnitVersions.Firmware">
+            <summary>
+            Gets or sets the firmware version.
+            </summary>
+        </member>
+        <member name="P:Telemax.DataService.Contracts.UnitVersions.Software">
+            <summary>
+            Gets or sets the software version.
+            </summary>
+        </member>
+        <member name="T:Telemax.DataService.Contracts.NetworkInfoMessage">
+            <summary>
+            Represents tracker network information message.
+            </summary>
+        </member>
+        <member name="P:Telemax.DataService.Contracts.NetworkInfoMessage.Operator">
+            <summary>
+            Gets or sets the mobile network operator name.
+            </summary>
+        </member>
+        <member name="P:Telemax.DataService.Contracts.NetworkInfoMessage.Technology">
+            <summary>
+            Gets or sets the mobile network access technology name (GSM, EDGE, etc...).
+            </summary>
+        </member>
+        <member name="P:Telemax.DataService.Contracts.NetworkInfoMessage.Band">
+            <summary>
+            Gets or sets the mobile network band name (GSM 850, LTE BAND 28, etc...).
+            </summary>
+        </member>
+        <member name="P:Telemax.DataService.Contracts.NetworkInfoMessage.Imsi">
+            <summary>
+            Gets or sets the IMSI (international mobile subscriber identity) number.
+            </summary>
+        </member>
+        <member name="P:Telemax.DataService.Contracts.NetworkInfoMessage.IccId">
+            <summary>
+            Gets or sets the ICCID (integrated circuit card identifier).
+            </summary>
+        </member>
+        <member name="T:Telemax.DataService.Contracts.MessageType">
+            <summary>
+            Enumerates message types.
+            Used by message producers/consumers for serialization/deserialization.
+            </summary>
+        </member>
+        <member name="F:Telemax.DataService.Contracts.MessageType.Data">
+            <summary>
+            Message is <see cref="T:Telemax.DataService.Contracts.DataMessage"/>
+            </summary>
+        </member>
+        <member name="F:Telemax.DataService.Contracts.MessageType.DeviceInfo">
+            <summary>
+            Message is <see cref="T:Telemax.DataService.Contracts.DeviceInfoMessage"/>
+            </summary>
+        </member>
+        <member name="F:Telemax.DataService.Contracts.MessageType.NetworkInfo">
+            <summary>
+            Message is <see cref="T:Telemax.DataService.Contracts.NetworkInfoMessage"/>
+            </summary>
+        </member>
+        <member name="T:Telemax.DataService.Contracts.MessageTypeHelper">
+            <summary>
+            Provides set of convenient methods used to deal with the tracker message types.
+            </summary>
+        </member>
+        <member name="F:Telemax.DataService.Contracts.MessageTypeHelper.MessageTypeProp">
+            <summary>
+            Defines name of the property used to store message type.
+            Used by message producers/consumers for serialization/deserialization.
+            </summary>
+        </member>
+        <member name="M:Telemax.DataService.Contracts.MessageTypeHelper.GetTypeConstant(Telemax.DataService.Contracts.Message)">
+            <summary>
+            Gets message type constant for the given message.
+            </summary>
+            <param name="message">Message to get type constant for.</param>
+            <returns>Message type constant.</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException">Thrown for unknown message types.</exception>
+        </member>
+        <member name="M:Telemax.DataService.Contracts.MessageTypeHelper.GetType(Telemax.DataService.Contracts.MessageType)">
+            <summary>
+            Gets message type for the given message type-code.
+            </summary>
+            <param name="messageTypeCode">Message type-code.</param>
+            <returns>Message type.</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException">Thrown for unknown message type-code.</exception>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,333 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Telemax.Shared.ClientDb</name>
+    </assembly>
+    <members>
+        <member name="T:Telemax.Shared.ClientDb.ClientDbContext">
+            <summary>
+            Represents client DB context.
+            It defines database which stores all the data for the specific Telemax client.
+            </summary>
+        </member>
+        <member name="M:Telemax.Shared.ClientDb.ClientDbContext.#ctor(Microsoft.EntityFrameworkCore.DbContextOptions{Telemax.Shared.ClientDb.ClientDbContext})">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="options">Options.</param>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.ClientDbContext.CompanyUsers">
+            <summary>
+            Gets or sets the collection of the connections between companies and users.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.ClientDbContext.Companies">
+            <summary>
+            Gets or sets the collection of companies.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.ClientDbContext.CompanyTrackers">
+            <summary>
+            Gets or sets the collection of the connections between companies and trackers.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.ClientDbContext.Trackers">
+            <summary>
+            Gets or sets the collection of trackers.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.ClientDbContext.Vehicles">
+            <summary>
+            Gets or sets the collection of vehicles.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.ClientDbContext.Geofences">
+            <summary>
+            Gets or sets the collection of geofences.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.ClientDbContext.AlertPolicies">
+            <summary>
+            Gets or sets the collection of alert policies.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.ClientDbContext.AlertPolicyVehicles">
+            <summary>
+            Gets or sets the collection of the connections between the alert policies and trackers.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.ClientDbContext.Alerts">
+            <summary>
+            Gets or sets the collection of alerts.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.ClientDbContext.RouteSegments">
+            <summary>
+            Gets or sets the collection of route segments (trips).
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.ClientDbContext.TrackerRecords_Common">
+            <summary>
+            Gets or sets the collection of general tracker records.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.ClientDbContext.TrackerRecords_DeviceInfo">
+            <summary>
+            Gets or sets the collection of device info tracker records.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.ClientDbContext.TrackerRecords_Dtc">
+            <summary>
+            Gets or sets the collection of DTC tracker records.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.ClientDbContext.TrackerRecords_NetworkInfo">
+            <summary>
+            Gets or sets the collection of network info tracker records.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.ClientDbContext.SensorRecords_BleStatus">
+            <summary>
+            Gets or sets the collection of BLE status sensor records.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.ClientDbContext.SensorRecords_Door">
+            <summary>
+            Gets or sets the collection of door sensor records.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.ClientDbContext.SensorRecords_DriverId">
+            <summary>
+            Gets or sets the collection of driver ID sensor records.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.ClientDbContext.SensorRecords_Environment">
+            <summary>
+            Gets or sets the collection of environment sensor records.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.ClientDbContext.SensorRecords_Level">
+            <summary>
+            Gets or sets the collection of (fuel) level sensor records.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.ClientDbContext.SensorRecords_Relay">
+            <summary>
+            Gets or sets the collection of relay sensor records.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.ClientDbContext.SensorRecords_Sos">
+            <summary>
+            Gets or sets the collection of SOS sensor records.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.ClientDbContext.SensorRecords_Tire">
+            <summary>
+            Gets or sets the collection of tire sensor records.
+            </summary>
+        </member>
+        <member name="M:Telemax.Shared.ClientDb.ClientDbContext.OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:Telemax.Shared.ClientDb.ClientDbContextDesignTimeFactory">
+            <summary>
+            Implements <see cref="T:Microsoft.EntityFrameworkCore.Design.IDesignTimeDbContextFactory`1"/> for <see cref="T:Telemax.Shared.ClientDb.ClientDbContext"/>.
+            </summary>
+        </member>
+        <member name="M:Telemax.Shared.ClientDb.ClientDbContextDesignTimeFactory.CreateDbContext(System.String[])">
+            <inheritdoc />
+        </member>
+        <member name="T:Telemax.Shared.ClientDb.Extensions.DbContextOptionsBuilderExtensions">
+            <summary>
+            Defines set of extension methods for the EF <see cref="T:Microsoft.EntityFrameworkCore.DbContextOptionsBuilder"/>
+            used to build options for <see cref="T:Telemax.Shared.ClientDb.ClientDbContext"/>.
+            </summary>
+        </member>
+        <member name="M:Telemax.Shared.ClientDb.Extensions.DbContextOptionsBuilderExtensions.UseClientDb(Microsoft.EntityFrameworkCore.DbContextOptionsBuilder,System.String)">
+            <summary>
+            Configures options builder for <see cref="T:Telemax.Shared.ClientDb.ClientDbContext"/>.
+            </summary>
+            <param name="builder">Options builder.</param>
+            <param name="connStr">Connection string.</param>
+            <returns>Options builder.</returns>
+        </member>
+        <member name="T:Telemax.Shared.ClientDb.Extensions.EntityTypeBuilderExtensions">
+            <summary>
+            Defines set of extension methods for the EF <see cref="T:Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder`1"/>.
+            </summary>
+        </member>
+        <member name="M:Telemax.Shared.ClientDb.Extensions.EntityTypeBuilderExtensions.HasRef``2(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{``0},System.Linq.Expressions.Expression{System.Func{``0,``1}},System.Linq.Expressions.Expression{System.Func{``0,System.Object}},System.Linq.Expressions.Expression{System.Func{``1,System.Collections.Generic.IEnumerable{``0}}},Microsoft.EntityFrameworkCore.DeleteBehavior)">
+            <summary>
+            Configures dependent to principal relationship between <typeparamref name="T"/> and <typeparamref name="TRef"/> correspondingly.
+            </summary>
+            <typeparam name="T">Type of the dependent entity.</typeparam>
+            <typeparam name="TRef">Type of the principal entity.</typeparam>
+            <param name="builder">Entity type builder.</param>
+            <param name="refExpression">Function expression which defines the property of the dependent entity which points to the principal entity.</param>
+            <param name="foreignKeyExpression">Function expression which defines the property which will be used to store the foreign key.</param>
+            <param name="backRefExpression">Function expression which defines the property of the principal entity which points to the collection of dependent entities.</param>
+            <param name="deleteBehavior">Defines delete behavior.</param>
+            <returns>One-to-many relationship builder.</returns>
+        </member>
+        <member name="M:Telemax.Shared.ClientDb.Extensions.EntityTypeBuilderExtensions.HasRef``2(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{``0},System.Linq.Expressions.Expression{System.Func{``0,``1}},System.Linq.Expressions.Expression{System.Func{``0,System.Object}},System.Linq.Expressions.Expression{System.Func{``1,``0}},Microsoft.EntityFrameworkCore.DeleteBehavior)">
+            <summary>
+            Configures dependent to principal relationship between <typeparamref name="T"/> and <typeparamref name="TRef"/> correspondingly.
+            </summary>
+            <typeparam name="T">Type of the dependent entity.</typeparam>
+            <typeparam name="TRef">Type of the principal entity.</typeparam>
+            <param name="builder">Entity type builder.</param>
+            <param name="refExpression">Function expression which defines the property of the dependent entity which points to the principal entity.</param>
+            <param name="foreignKeyExpression">Function expression which defines the property which will be used to store the foreign key.</param>
+            <param name="backRefExpression">Function expression which defines the property of the principal entity which points to the dependent entity.</param>
+            <param name="deleteBehavior">Defines delete behavior.</param>
+            <returns>One-to-one relationship builder.</returns>
+        </member>
+        <member name="M:Telemax.Shared.ClientDb.Extensions.EntityTypeBuilderExtensions.IsHypertable``1(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{``0},System.Linq.Expressions.Expression{System.Func{``0,System.DateTime}},System.TimeSpan,System.TimeSpan,System.ValueTuple{System.Linq.Expressions.Expression{System.Func{``0,System.Object}},System.Int32}[])">
+            <summary>
+            Configures Timescale DB hypertable.
+            </summary>
+            <typeparam name="TEntity">Type of the entity.</typeparam>
+            <param name="builder">Entity type builder.</param>
+            <param name="timeDimensionProperty">Expression which defines the time dimension property.</param>
+            <param name="timeDimensionChunkSize">Time dimension chunk size.</param>
+            <param name="retentionPeriod">Data retention period.</param>
+            <param name="dimensions"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Telemax.Shared.ClientDb.Extensions.ModelBuilderExtensions">
+            <summary>
+            Defines set of extension methods for the EF <see cref="T:Microsoft.EntityFrameworkCore.ModelBuilder"/> used for Client DB context configuration.
+            </summary>
+        </member>
+        <member name="M:Telemax.Shared.ClientDb.Extensions.ModelBuilderExtensions.Configure``1(Microsoft.EntityFrameworkCore.ModelBuilder,System.Action{Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{``0}})">
+            <summary>
+            Configures entity.
+            </summary>
+            <typeparam name="TEntity">Entity type to configure.</typeparam>
+            <param name="builder">EF model builder.</param>
+            <param name="configAction">Configuration logic.</param>
+        </member>
+        <member name="M:Telemax.Shared.ClientDb.Extensions.ModelBuilderExtensions.ConfigureTrackerRecord``1(Microsoft.EntityFrameworkCore.ModelBuilder,System.Linq.Expressions.Expression{System.Func{Telemax.Shared.ClientDb.Entities.Tracker,System.Collections.Generic.IEnumerable{``0}}},System.Linq.Expressions.Expression{System.Func{Telemax.Shared.ClientDb.Entities.Vehicle,System.Collections.Generic.IEnumerable{``0}}},System.Action{Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{``0}},System.Nullable{System.TimeSpan},System.Int32,System.Nullable{System.TimeSpan})">
+            <summary>
+            Configures concrete <see cref="T:Telemax.Shared.ClientDb.Entities.TrackerRecord"/> type.
+            </summary>
+            <typeparam name="T">Type of tracker record.</typeparam>
+            <param name="builder">Model builder.</param>
+            <param name="trackerNavExpression">Navigation collection property expression for tracker entity.</param>
+            <param name="vehicleNavExpression">Navigation collection property expression for vehicle entity.</param>
+            <param name="configAction">Configuration logic.</param>
+            <param name="timeDimensionChunkSize">Time dimension chunk size.</param>
+            <param name="trackerIdDimensionSize">Tracker ID dimension size.</param>
+            <param name="retentionPeriod">Retention period.</param>
+        </member>
+        <member name="M:Telemax.Shared.ClientDb.Extensions.ModelBuilderExtensions.ConfigureSensorRecord``1(Microsoft.EntityFrameworkCore.ModelBuilder,System.Linq.Expressions.Expression{System.Func{Telemax.Shared.ClientDb.Entities.Tracker,System.Collections.Generic.IEnumerable{``0}}},System.Linq.Expressions.Expression{System.Func{Telemax.Shared.ClientDb.Entities.Vehicle,System.Collections.Generic.IEnumerable{``0}}},System.Action{Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{``0}},System.Nullable{System.TimeSpan},System.Int32,System.Int32,System.Nullable{System.TimeSpan})">
+            <summary>
+            Configures concrete <see cref="T:Telemax.Shared.ClientDb.Entities.SensorRecord"/> type.
+            </summary>
+            <typeparam name="T">Type of sensor record.</typeparam>
+            <param name="builder">Model builder.</param>
+            <param name="trackerNavExpression">Navigation collection property expression for tracker entity.</param>
+            <param name="vehicleNavExpression">Navigation collection property expression for vehicle entity.</param>
+            <param name="configAction">Configuration logic.</param>
+            <param name="timeDimensionChunkSize">Time dimension chunk size.</param>
+            <param name="trackerIdDimensionSize">Tracker ID dimension size.</param>
+            <param name="sensorIdDimensionSize">Sensor ID dimension size.</param>
+            <param name="retentionPeriod">Retention period.</param>
+        </member>
+        <member name="T:Telemax.Shared.ClientDb.TableNameUtils">
+            <summary>
+            Defines set of methods used to generate non-default table names.
+            </summary>
+        </member>
+        <member name="M:Telemax.Shared.ClientDb.TableNameUtils.GetHypertableName``1(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{``0})">
+            <summary>
+            Returns table name for the hypertable.
+            </summary>
+            <typeparam name="T">Entity type.</typeparam>
+            <param name="entityTypeBuilder">Entity type builder.</param>
+            <returns>Table name.</returns>
+        </member>
+        <member name="M:Telemax.Shared.ClientDb.TableNameUtils.GetSubtypeTableName``2(System.String)">
+            <summary>
+            Returns table name for the concrete entity type using name of the base type.
+            </summary>
+            <typeparam name="TBase">Base entity type.</typeparam>
+            <typeparam name="TConcrete">Concrete entity type.</typeparam>
+            <param name="prefix">Table name prefix.</param>
+            <returns>Table name.</returns>
+            <exception cref="T:System.InvalidOperationException">Thrown in case concrete type name doesn't ends with base type name.</exception>
+        </member>
+        <member name="T:Telemax.Shared.ClientDb.TimescaleDb.HypertableParams">
+            <summary>
+            Represents parameters used to generate hypertable initialization SQL.
+            </summary>
+        </member>
+        <member name="M:Telemax.Shared.ClientDb.TimescaleDb.HypertableParams.#ctor(System.String,System.TimeSpan,System.TimeSpan,Telemax.Shared.ClientDb.TimescaleDb.HypertableParams.DimensionParams[])">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="timeDimensionColumnName">Name of the time dimension column.</param>
+            <param name="timeDimensionChunkSize">Time dimension chunk size.</param>
+            <param name="retentionPeriod">Data retention period.</param>
+            <param name="dimensions">List of additional dimensions.</param>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.TimescaleDb.HypertableParams.TimeDimensionColumnName">
+            <summary>
+            Gets the name of the time dimension column.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.TimescaleDb.HypertableParams.TimeDimensionChunkSize">
+            <summary>
+            Gets the time dimension chunk size.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.TimescaleDb.HypertableParams.RetentionPeriod">
+            <summary>
+            Gets data retention period.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.TimescaleDb.HypertableParams.Dimensions">
+            <summary>
+            Gets the list of additional dimensions.
+            </summary>
+        </member>
+        <member name="T:Telemax.Shared.ClientDb.TimescaleDb.HypertableParams.DimensionParams">
+            <summary>
+            Represents hypertable dimension parameters.
+            </summary>
+        </member>
+        <member name="M:Telemax.Shared.ClientDb.TimescaleDb.HypertableParams.DimensionParams.#ctor(System.String,System.Int32)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="columnName">Column name.</param>
+            <param name="size">Dimension size (amount of chunks along the dimension axis).</param>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.TimescaleDb.HypertableParams.DimensionParams.ColumnName">
+            <summary>
+            Gets dimension column name.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.TimescaleDb.HypertableParams.DimensionParams.Size">
+            <summary>
+            Gets dimension size.
+            </summary>
+        </member>
+        <member name="T:Telemax.Shared.ClientDb.TimescaleDb.TimescaleDbMigrationsSqlGenerator">
+            <summary>
+            Extends <see cref="T:Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator"/> with TimescaleDb-related features.
+            </summary>
+        </member>
+        <member name="F:Telemax.Shared.ClientDb.TimescaleDb.TimescaleDbMigrationsSqlGenerator.HypertableAnnotationName">
+            <summary>
+            Defines hypertable annotation name.
+            </summary>
+        </member>
+        <member name="M:Telemax.Shared.ClientDb.TimescaleDb.TimescaleDbMigrationsSqlGenerator.#ctor(Microsoft.EntityFrameworkCore.Migrations.MigrationsSqlGeneratorDependencies,Npgsql.EntityFrameworkCore.PostgreSQL.Infrastructure.Internal.INpgsqlOptions)">
+            <inheritdoc />
+        </member>
+        <member name="M:Telemax.Shared.ClientDb.TimescaleDb.TimescaleDbMigrationsSqlGenerator.Generate(Microsoft.EntityFrameworkCore.Migrations.Operations.CreateTableOperation,Microsoft.EntityFrameworkCore.Metadata.IModel,Microsoft.EntityFrameworkCore.Migrations.MigrationCommandListBuilder,System.Boolean)">
+            <inheritdoc />
+        </member>
+    </members>
+</doc>

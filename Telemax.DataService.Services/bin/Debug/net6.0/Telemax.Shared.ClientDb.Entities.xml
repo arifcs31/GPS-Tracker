@@ -1,0 +1,1543 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Telemax.Shared.ClientDb.Entities</name>
+    </assembly>
+    <members>
+        <member name="T:Telemax.Shared.ClientDb.Entities.Alert">
+            <summary>
+            Represents the alert (i.e. tracker-related event fired according to the <see cref="P:Telemax.Shared.ClientDb.Entities.Alert.AlertPolicy"/>).
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.Alert.Id">
+            <summary>
+            Gets or sets the unique alert ID.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.Alert.AlertPolicyId">
+            <summary>
+            Gets or sets the ID of the alert policy which caused the alert.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.Alert.TrackerId">
+            <summary>
+            Gets or sets the ID of the tracker which caused the alert.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.Alert.VehicleId">
+            <summary>
+            Gets or sets the ID of the vehicle which caused the alert.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.Alert.Location">
+            <summary>
+            Gets or sets the GPS location of the alert.
+            X stands for longitude in range [-180, 180].
+            Y stands for latitude in range [-90, 90].
+            Z (optional) stands for altitude (meters).
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.Alert.CreateDate">
+            <summary>
+            Gets or sets the record create date.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.Alert.MarkedAsReadDate">
+            <summary>
+            Gets or sets the date the alert was marked as read by the user.
+            Alert considered unread until this property is not set.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.Alert.AlertPolicy">
+            <summary>
+            Gets or sets the alert policy which caused the alert.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.Alert.Tracker">
+            <summary>
+            Gets or sets the tracker which caused the alert.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.Alert.Vehicle">
+            <summary>
+            Gets or sets the vehicle which caused the alert.
+            </summary>
+        </member>
+        <member name="T:Telemax.Shared.ClientDb.Entities.DtcAlertPolicy">
+            <summary>
+            Represents DTC-code alert policy.
+            Fires in response to the new DTC-code within the 48 hours time frame.
+            </summary>
+        </member>
+        <member name="T:Telemax.Shared.ClientDb.Entities.FatigueAlertPolicy">
+            <summary>
+            Represents fatigue alert policy.
+            Fires when the vehicle driver drives too long in context of a single trip.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.FatigueAlertPolicy.MaxDrivingTime">
+            <summary>
+            Gets or sets the maximal allowed duration of the continuous driving within a single trip.
+            </summary>
+        </member>
+        <member name="T:Telemax.Shared.ClientDb.Entities.GeofenceBorderAlertPolicy">
+            <summary>
+            Represents geofence border alert policy.
+            Fires when the vehicle crosses the border of the specified geofence(s).
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.GeofenceBorderAlertPolicy.FireOn">
+            <summary>
+            Gets or sets the events used to fire the alert.
+            </summary>
+        </member>
+        <member name="T:Telemax.Shared.ClientDb.Entities.GeofenceAlertPolicyEvents">
+            <summary>
+            Enumerates the events used by the <see cref="T:Telemax.Shared.ClientDb.Entities.GeofenceBorderAlertPolicy"/>.
+            </summary>
+        </member>
+        <member name="F:Telemax.Shared.ClientDb.Entities.GeofenceAlertPolicyEvents.Enter">
+            <summary>
+            Vehicle enters the geofence.
+            </summary>
+        </member>
+        <member name="F:Telemax.Shared.ClientDb.Entities.GeofenceAlertPolicyEvents.Exit">
+            <summary>
+            Vehicle exits the geofence.
+            </summary>
+        </member>
+        <member name="T:Telemax.Shared.ClientDb.Entities.GeofenceSpeedAlertPolicy">
+            <summary>
+            Represents geofence speed alert policy.
+            Fires when the specified speed is reached within the specified geofence.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.GeofenceSpeedAlertPolicy.MaxSpeed">
+            <summary>
+            Gets or sets the maximal speed allowed within the geofence (km/h).
+            </summary>
+        </member>
+        <member name="T:Telemax.Shared.ClientDb.Entities.GeofenceAlertPolicy">
+            <summary>
+            Represents abstract alert policy which may reference multiple geofences.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.GeofenceAlertPolicy.GeofenceAlertPolicyGeofences">
+            <summary>
+            Gets or sets the list of the connections between this alert policy and related geofences.
+            </summary>
+        </member>
+        <member name="T:Telemax.Shared.ClientDb.Entities.IdleAlertPolicy">
+            <summary>
+            Represents idle alert policy.
+            Fires in response to continuous idle.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.IdleAlertPolicy.MaxIdleTime">
+            <summary>
+            Gets or sets the maximal allowed duration of the continuous idle.
+            </summary>
+        </member>
+        <member name="T:Telemax.Shared.ClientDb.Entities.IgnitionAlertPolicy">
+            <summary>
+            Represents idle alert policy.
+            Fires when the engine started or stopped.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.IgnitionAlertPolicy.FireOn">
+            <summary>
+            Gets or sets the events used to fire the alert.
+            </summary>
+        </member>
+        <member name="T:Telemax.Shared.ClientDb.Entities.IgnitionAlertPolicyEvents">
+            <summary>
+            Enumerates the events used by the <see cref="T:Telemax.Shared.ClientDb.Entities.IgnitionAlertPolicy"/>.
+            </summary>
+        </member>
+        <member name="F:Telemax.Shared.ClientDb.Entities.IgnitionAlertPolicyEvents.Start">
+            <summary>
+            Engine was started.
+            </summary>
+        </member>
+        <member name="F:Telemax.Shared.ClientDb.Entities.IgnitionAlertPolicyEvents.Stop">
+            <summary>
+            Engine was stopped.
+            </summary>
+        </member>
+        <member name="T:Telemax.Shared.ClientDb.Entities.LowBatteryAlertPolicy">
+            <summary>
+            Represents low battery alert policy.
+            Fires when the battery voltage decreases to the specific value.
+            TODO: Add minimal battery percentage in future?
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.LowBatteryAlertPolicy.MinVoltage">
+            <summary>
+            Gets or sets the minimal allowed battery voltage (volts).
+            </summary>
+        </member>
+        <member name="T:Telemax.Shared.ClientDb.Entities.MaxSpeedAlertPolicy">
+            <summary>
+            Represents max speed alert policy.
+            Fires when the vehicle speed increases to the specific value.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.MaxSpeedAlertPolicy.MaxSpeed">
+            <summary>
+            Gets or sets the maximal allowed speed (km/h).
+            </summary>
+        </member>
+        <member name="T:Telemax.Shared.ClientDb.Entities.MileageAlertPolicy">
+            <summary>
+            Represents mileage alert policy.
+            Fires when the vehicle travels the specific distance within the specified time frame.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.MileageAlertPolicy.TimeFrame">
+            <summary>
+            Gets or sets the time frame used to measure the traveled distance.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.MileageAlertPolicy.MaxDistance">
+            <summary>
+            Gets or sets the maximal allowed distance (km).
+            </summary>
+        </member>
+        <member name="T:Telemax.Shared.ClientDb.Entities.SpeedLimitAlertPolicy">
+            <summary>
+            Represents speed limit alert policy.
+            Fires when the vehicle violates the speed limit during the trip.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.SpeedLimitAlertPolicy.AllowedOverspeed">
+            <summary>
+            Gets or set the allowed overspeed (km/h).
+            </summary>
+        </member>
+        <member name="T:Telemax.Shared.ClientDb.Entities.AlertPolicy">
+            <summary>
+            Represents user-defined alert policy settings.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.AlertPolicy.Id">
+            <summary>
+            Gets or sets the unique alert policy ID.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.AlertPolicy.CompanyId">
+            <summary>
+            Gets or sets the ID of the company which this alert policy is create for.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.AlertPolicy.UserId">
+            <summary>
+            Gets or sets the ID of the user who created the policy.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.AlertPolicy.CreateDate">
+            <summary>
+            Gets or sets the record create date.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.AlertPolicy.Name">
+            <summary>
+            Gets or sets the user-defined alert policy name.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.AlertPolicy.Description">
+            <summary>
+            Gets or sets the user-defined alert policy description.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.AlertPolicy.IsGlobal">
+            <summary>
+            Gets or sets the flag which determines if the alert policy should be applied
+            to all the trackers within the company defined by the <see cref="P:Telemax.Shared.ClientDb.Entities.AlertPolicy.CompanyId"/>.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.AlertPolicy.IsDeleted">
+            <summary>
+            Gets or sets the flag which determines if alert is deleted.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.AlertPolicy.IsActive">
+            <summary>
+            Gets or sets the flag which determines if alert is enabled.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.AlertPolicy.Company">
+            <summary>
+            Gets or sets the company.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.AlertPolicy.User">
+            <summary>
+            Gets or sets user who created the policy.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.AlertPolicy.Vehicles">
+            <summary>
+            Gets or sets the list of connections between the alert policy and vehicles.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.AlertPolicy.Alerts">
+            <summary>
+            Gets or sets the list of the alerts caused by this alert policy.
+            </summary>
+        </member>
+        <member name="T:Telemax.Shared.ClientDb.Entities.DtcAlert">
+            <summary>
+            Represents the alert generated by the <see cref="T:Telemax.Shared.ClientDb.Entities.DtcAlertPolicy"/>.
+            </summary>
+        </member>
+        <member name="T:Telemax.Shared.ClientDb.Entities.FatigueAlert">
+            <summary>
+            Represents the alert generated by the <see cref="T:Telemax.Shared.ClientDb.Entities.FatigueAlertPolicy"/>.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.FatigueAlert.MaxDrivingTime">
+            <summary>
+            Gets or sets the maximal allowed duration of the continuous driving.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.FatigueAlert.DrivingTime">
+            <summary>
+            Gets or sets actual driving time.
+            </summary>
+        </member>
+        <member name="T:Telemax.Shared.ClientDb.Entities.GeofenceAlert">
+            <summary>
+            Represents abstract alert fired by the <see cref="T:Telemax.Shared.ClientDb.Entities.GeofenceAlertPolicy"/>.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.GeofenceAlert.GeofenceId">
+            <summary>
+            Gets or sets the ID of the related geofence.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.GeofenceAlert.Geofence">
+            <summary>
+            Gets or sets the related geofence.
+            </summary>
+        </member>
+        <member name="T:Telemax.Shared.ClientDb.Entities.GeofenceBorderAlert">
+            <summary>
+            Represents the alert generated by the <see cref="T:Telemax.Shared.ClientDb.Entities.GeofenceBorderAlertPolicy"/>.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.GeofenceBorderAlert.IsExit">
+            <summary>
+            Get or sets the flag which determines if the tracker enters or exits the geofence.
+            </summary>
+        </member>
+        <member name="T:Telemax.Shared.ClientDb.Entities.GeofenceSpeedAlert">
+            <summary>
+            Represents the alert generated by the <see cref="T:Telemax.Shared.ClientDb.Entities.GeofenceSpeedAlertPolicy"/>.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.GeofenceSpeedAlert.MaxSpeed">
+            <summary>
+            Gets or sets the maximal speed allowed within the geofence (km/h).
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.GeofenceSpeedAlert.Speed">
+            <summary>
+            Gets or sets the actual vehicle speed (km/h).
+            </summary>
+        </member>
+        <member name="T:Telemax.Shared.ClientDb.Entities.IdleAlert">
+            <summary>
+            Represents the alert generated by the <see cref="T:Telemax.Shared.ClientDb.Entities.IdleAlertPolicy"/>.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.IdleAlert.MaxIdleTime">
+            <summary>
+            Gets or set the maximal allowed duration of the continuous idle.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.IdleAlert.IdleTime">
+            <summary>
+            Gets or set the actual idle duration.
+            </summary>
+        </member>
+        <member name="T:Telemax.Shared.ClientDb.Entities.IgnitionAlert">
+            <summary>
+            Represents the alert generated by the <see cref="T:Telemax.Shared.ClientDb.Entities.IgnitionAlertPolicy"/>.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.IgnitionAlert.IsStarted">
+            <summary>
+            Gets or sets the flag which determines if the engine was started or stopped.
+            </summary>
+        </member>
+        <member name="T:Telemax.Shared.ClientDb.Entities.LowBatteryAlert">
+            <summary>
+            Represents the alert generated by the <see cref="T:Telemax.Shared.ClientDb.Entities.LowBatteryAlertPolicy"/>.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.LowBatteryAlert.MinVoltage">
+            <summary>
+            Gets or sets the minimal allowed battery voltage (volts).
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.LowBatteryAlert.Voltage">
+            <summary>
+            Gets or sets the actual battery voltage (volts).
+            </summary>
+        </member>
+        <member name="T:Telemax.Shared.ClientDb.Entities.MaxSpeedAlert">
+            <summary>
+            Represents the alert generated by the <see cref="T:Telemax.Shared.ClientDb.Entities.MaxSpeedAlertPolicy"/>.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.MaxSpeedAlert.MaxSpeed">
+            <summary>
+            Gets or sets the max allowed speed.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.MaxSpeedAlert.Speed">
+            <summary>
+            Gets or sets the actual speed.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.MaxSpeedAlert.SpeedDate">
+            <summary>
+            Gets or sets the date when the actual speed was reached.
+            </summary>
+        </member>
+        <member name="T:Telemax.Shared.ClientDb.Entities.MileageAlert">
+            <summary>
+            Represents the alert generated by the <see cref="T:Telemax.Shared.ClientDb.Entities.MileageAlertPolicy"/>.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.MileageAlert.TimeFrame">
+            <summary>
+            Gets or sets the time frame used to measure the traveled distance.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.MileageAlert.MaxDistance">
+            <summary>
+            Gets or sets the maximal allowed distance (km).
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.MileageAlert.Distance">
+            <summary>
+            Gets or sets the actual distance (km).
+            </summary>
+        </member>
+        <member name="T:Telemax.Shared.ClientDb.Entities.SpeedLimitAlert">
+            <summary>
+            Represents the alert generated by the <see cref="T:Telemax.Shared.ClientDb.Entities.SpeedLimitAlertPolicy"/>.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.SpeedLimitAlert.MaxSpeed">
+            <summary>
+            Gets or sets the max allowed speed.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.SpeedLimitAlert.Speed">
+            <summary>
+            Gets or sets the actual speed.
+            </summary>
+        </member>
+        <member name="T:Telemax.Shared.ClientDb.Entities.Company">
+            <summary>
+            Represents company.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.Company.Id">
+            <summary>
+            Gets or sets the unique company ID.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.Company.ParentId">
+            <summary>
+            Gets or sets the ID of the parent company.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.Company.Name">
+            <summary>
+            Gets or sets the name of the company.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.Company.CreateDate">
+            <summary>
+            Gets or sets the record create date.
+            Technically it is the company registration date.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.Company.DeleteDate">
+            <summary>
+            Gets or sets the date of company deletion.
+            Null means that company is not deleted yet.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.Company.IsSuspended">
+            <summary>
+            Gets or sets the flag which determines if the company is suspended (i.e. we are not providing them our service).
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.Company.Parent">
+            <summary>
+            Gets or sets the parent company.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.Company.Children">
+            <summary>
+            Gets or sets the list of child companies.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.Company.Vehicles">
+            <summary>
+            Gets or sets the list of vehicles created for this company.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.Company.Geofences">
+            <summary>
+            Gets or sets the list of geofences created for this company.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.Company.CompanyTrackers">
+            <summary>
+            Gets or sets the list of connections between the company and it's trackers.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.Company.AlertPolicies">
+            <summary>
+            Gets or sets the list of alert policies created for this company.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.Company.CompanyUsers">
+            <summary>
+            Gets or sets the list of connections between the company and it's users.
+            </summary>
+        </member>
+        <member name="T:Telemax.Shared.ClientDb.Entities.Geofence">
+            <summary>
+            Represents the geofence (i.e. some user-defined area which may be used to )
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.Geofence.Id">
+            <summary>
+            Gets or sets the unique geofence ID.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.Geofence.CompanyId">
+            <summary>
+            Gets or sets the ID of the company which owns the geofence.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.Geofence.CreateDate">
+            <summary>
+            Gets or sets the record create date.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.Geofence.Name">
+            <summary>
+            Gets or sets the user-defined geofence name.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.Geofence.Description">
+            <summary>
+            Gets or sets the user-defined geofence description.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.Geofence.Geometry">
+            <summary>
+            Gets or sets the user-defined geofence geometry.
+            For now it should be some figure with area (polygon, circle, etc...).
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.Geofence.Thickness">
+            <summary>
+            Gets or sets geometry thickness.
+            If set then the geofence area will be defined by edges (with some thickness) of the figure defined by <see cref="P:Telemax.Shared.ClientDb.Entities.Geofence.Geometry"/>.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.Geofence.Color">
+            <summary>
+            Gets or sets the user-defined geofence color.
+            Should be defined as the hex-encoded RGB without leading '#' (for example "990AFA" will define violet).
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.Geofence.IsDeleted">
+            <summary>
+            Gets or sets the flag which determines if geofence is deleted.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.Geofence.Company">
+            <summary>
+            Gets or sets the company this geofence was created by.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.Geofence.GeofenceAlertPolicyGeofences">
+            <summary>
+            Gets or sets the list of connections between the geofence and the geofence alert policies based on it.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.Geofence.GeofenceAlerts">
+            <summary>
+            Gets or sets the list of geofence alerts based on this geofence.
+            </summary>
+        </member>
+        <member name="T:Telemax.Shared.ClientDb.Entities.AlertPolicyVehicles">
+            <summary>
+            Represents the connection between alert and vehicles.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.AlertPolicyVehicles.AlertPolicyId">
+            <summary>
+            Gets or sets the ID of the alert policy.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.AlertPolicyVehicles.VehicleId">
+            <summary>
+            Gets or sets the ID of the vehicle which the alert policy should be applied to.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.AlertPolicyVehicles.IsExcludeLink">
+            <summary>
+            Gets or sets the flag which determines if the connection excludes the vehicle from the alert policy.
+            So it's possible to create the global alert policy and exclude some vehicles from the list.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.AlertPolicyVehicles.AlertPolicy">
+            <summary>
+            Gets or sets the alert policy.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.AlertPolicyVehicles.Vehicle">
+            <summary>
+            Gets or sets the vehicle which the alert policy should be applied to.
+            </summary>
+        </member>
+        <member name="T:Telemax.Shared.ClientDb.Entities.CompanyTracker">
+            <summary>
+            Represents connection between company and tracker.
+            From the business perspective this object means, that the specific company can see the specific tracker and it's data.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.CompanyTracker.CompanyId">
+            <summary>
+            Gets or sets the company ID.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.CompanyTracker.TrackerId">
+            <summary>
+            Gets or sets the tracker ID (IMEI).
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.CompanyTracker.Company">
+            <summary>
+            Gets or sets the company.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.CompanyTracker.Tracker">
+            <summary>
+            Gets or sets the tracker.
+            </summary>
+        </member>
+        <member name="T:Telemax.Shared.ClientDb.Entities.CompanyUsers">
+            <summary>
+            Represents the connection between users and companies.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.CompanyUsers.CompanyId">
+            <summary>
+            Gets or sets the ID of the company.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.CompanyUsers.UserId">
+            <summary>
+            Gets or sets the ID of the user.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.CompanyUsers.Company">
+            <summary>
+            Gets or sets the company.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.CompanyUsers.User">
+            <summary>
+            Gets or sets the user.
+            </summary>
+        </member>
+        <member name="T:Telemax.Shared.ClientDb.Entities.GeofenceAlertPolicyGeofence">
+            <summary>
+            Represents the connection between <see cref="T:Telemax.Shared.ClientDb.Entities.GeofenceAlertPolicy"/> and <see cref="T:Telemax.Shared.ClientDb.Entities.Geofence"/>.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.GeofenceAlertPolicyGeofence.AlertPolicyId">
+            <summary>
+            Gets or sets the ID of the related alert policy.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.GeofenceAlertPolicyGeofence.GeofenceId">
+            <summary>
+            Gets or sets the ID of the related geofence.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.GeofenceAlertPolicyGeofence.AlertPolicy">
+            <summary>
+            Gets or sets the alert policy.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.GeofenceAlertPolicyGeofence.Geofence">
+            <summary>
+            Gets or sets the related geofence.
+            </summary>
+        </member>
+        <member name="T:Telemax.Shared.ClientDb.Entities.TrackingDataOwner">
+            <summary>
+            Represents object which owns tracking data records.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.TrackingDataOwner.TrackerRecords_Common">
+            <summary>
+            Gets or sets the list of common tracker records.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.TrackingDataOwner.TrackerRecords_DeviceInfo">
+            <summary>
+            Gets or sets the list of device info tracker records.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.TrackingDataOwner.TrackerRecords_Dtc">
+            <summary>
+            Gets or sets the list of DTC tracker records.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.TrackingDataOwner.TrackerRecords_NetworkInfo">
+            <summary>
+            Gets or sets the list of network info tracker records.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.TrackingDataOwner.SensorRecords_BleStatus">
+            <summary>
+            Gets or sets the list of BLE status sensor records.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.TrackingDataOwner.SensorRecords_Door">
+            <summary>
+            Gets or sets the list of door sensor records.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.TrackingDataOwner.SensorRecords_DriverId">
+            <summary>
+            Gets or sets the list of driver ID sensor records.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.TrackingDataOwner.SensorRecords_Environment">
+            <summary>
+            Gets or sets the list of environment sensor records.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.TrackingDataOwner.SensorRecords_Level">
+            <summary>
+            Gets or sets the list of (fuel) level sensor records.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.TrackingDataOwner.SensorRecords_Relay">
+            <summary>
+            Gets or sets the list of relay sensor records.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.TrackingDataOwner.SensorRecords_Sos">
+            <summary>
+            Gets or sets the list of SOS sensor records.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.TrackingDataOwner.SensorRecords_Tire">
+            <summary>
+            Gets or sets the list of tire sensor records.
+            </summary>
+        </member>
+        <member name="T:Telemax.Shared.ClientDb.Entities.Tracker">
+            <summary>
+            Represents tracking device.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.Tracker.Id">
+            <summary>
+            Gets or sets the tracker ID (IMEI).
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.Tracker.OldId">
+            <summary>
+            Gets or the ID of the tracker as it was in previous DB.
+            TODO: Deal with it later as we decide with the new vehicle management BL.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.Tracker.VehicleId">
+            <summary>
+            Gets or sets the ID of the vehicle the tracker is installed on.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.Tracker.CreateDate">
+            <summary>
+            Gets or sets the record create date.
+            Technically it is the date of the first tracker record.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.Tracker.Vehicle">
+            <summary>
+            Gets or sets the vehicle the tracker is installed on at the moment.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.Tracker.CompanyTrackers">
+            <summary>
+            Gets or sets the list of connections between the tracker and it's companies.
+            Note that the new trackers has no records in this list and should be assigned to specific companies manually.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.Tracker.Alerts">
+            <summary>
+            Gets or sets the list of the alerts caused by this tracker.
+            </summary>
+        </member>
+        <member name="T:Telemax.Shared.ClientDb.Entities.RouteSegment">
+            <summary>
+            Represents tracker route segment (idle or trip, see <see cref="P:Telemax.Shared.ClientDb.Entities.RouteSegment.Type"/>).
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.RouteSegment.TrackerId">
+            <summary>
+            Gets or sets the ID of the tracker which owns this route segment.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.RouteSegment.StartDate">
+            <summary>
+            Gets or sets the start date (UTC) of the route segment.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.RouteSegment.FinishDate">
+            <summary>
+            Gets or sets the finish date (UTC) of the route segment.
+            The value is set once while route segment closing (in order to avoid frequent updates).
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.RouteSegment.Type">
+            <summary>
+            Gets or sets the type of the route segment.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.RouteSegment.Stats">
+            <summary>
+            Gets or sets route segment's statistics.
+            The value is set periodically (in order to avoid frequent updates).
+            </summary>
+        </member>
+        <member name="T:Telemax.Shared.ClientDb.Entities.RouteSegment.SegmentType">
+            <summary>
+            Enumerates types of the tracker path segment.
+            </summary>
+        </member>
+        <member name="F:Telemax.Shared.ClientDb.Entities.RouteSegment.SegmentType.Idle">
+            <summary>
+            Path segment created for stopped engine.
+            </summary>
+        </member>
+        <member name="F:Telemax.Shared.ClientDb.Entities.RouteSegment.SegmentType.Trip">
+            <summary>
+            Path segment created for started engine.
+            </summary>
+        </member>
+        <member name="T:Telemax.Shared.ClientDb.Entities.RouteSegment.SegmentStats">
+            <summary>
+            Represents path segment's statistics.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.RouteSegment.SegmentStats.MaxSpeed">
+            <summary>
+            Gets or sets the peak speed during the trip, km/h.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.RouteSegment.SegmentStats.TotalIdleDuration">
+            <summary>
+            Gets or sets the total amount of time while the vehicle wasn't moving.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.RouteSegment.SegmentStats.MaxIdleDuration">
+            <summary>
+            Gets or sets the maximal amount of time while the vehicle wasn't moving.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.RouteSegment.SegmentStats.TimeSpentInSuburb">
+            <summary>
+            Gets or sets the amount of time spent in suburb.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.RouteSegment.SegmentStats.TimeSpentInCity">
+            <summary>
+            Gets or sets the amount of time spent in city.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.RouteSegment.SegmentStats.TimeSpentOnHighway">
+            <summary>
+            Gets or sets the amount of time spent on highway.
+            </summary>
+        </member>
+        <member name="T:Telemax.Shared.ClientDb.Entities.SensorRecord">
+            <summary>
+            Represents abstract sensor data record.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.SensorRecord.SensorId">
+            <summary>
+            Gets or sets the sensor ID.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.SensorRecord.Type">
+            <summary>
+            Gets or sets the sensor type.
+            </summary>
+        </member>
+        <member name="T:Telemax.Shared.ClientDb.Entities.SensorRecord.SensorType">
+            <summary>
+            Enumerates sensor types.
+            </summary>
+        </member>
+        <member name="F:Telemax.Shared.ClientDb.Entities.SensorRecord.SensorType.Rs232">
+            <summary>
+            RS232 sensor.
+            </summary>
+        </member>
+        <member name="F:Telemax.Shared.ClientDb.Entities.SensorRecord.SensorType.Ble">
+            <summary>
+            BLE (Bluetooth Low Energy) sensor.
+            </summary>
+        </member>
+        <member name="T:Telemax.Shared.ClientDb.Entities.BleStatusSensorRecord">
+            <summary>
+            Represents BLE sensor status record.
+            Used to track sensor's state and store sensor-related alarms (like low battery alarm).
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.BleStatusSensorRecord.Rssi">
+            <summary>
+            Gets or sets the RSSI (Received Signal Strength Indicator), dBm.
+            Null means that sensor doesn't report the signal strength.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.BleStatusSensorRecord.BatteryVoltage">
+            <summary>
+            Gets or sets the sensor's battery voltage, mV.
+            Null means that sensor doesn't report the battery voltage.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.BleStatusSensorRecord.BatteryPercentage">
+            <summary>
+            Gets or sets the sensor's battery level, percents.
+            Null means that sensor doesn't report the battery level.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.BleStatusSensorRecord.IsBatteryLow">
+            <summary>
+            Gets or sets the flag which determines if the sensor's battery charge is low.
+            Null means that sensor doesn't report this flag.
+            </summary>
+        </member>
+        <member name="T:Telemax.Shared.ClientDb.Entities.DoorSensorRecord">
+            <summary>
+            Represents door sensor record.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.DoorSensorRecord.IsOpen">
+            <summary>
+            Gets or sets the flag which determines if the door is opened.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.DoorSensorRecord.Temperature">
+            <summary>
+            Gets or sets the temperature near the sensor, °C.
+            </summary>
+        </member>
+        <member name="T:Telemax.Shared.ClientDb.Entities.DriverIdSensorRecord">
+            <summary>
+            Represents driver identification sensor record.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.DriverIdSensorRecord.Mechanism">
+            <summary>
+            Gets or sets sensor's internal mechanism.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.DriverIdSensorRecord.Data">
+            <summary>
+            Gets or sets driver identification data.
+            </summary>
+        </member>
+        <member name="T:Telemax.Shared.ClientDb.Entities.DriverIdSensorRecord.SensorMechanism">
+            <summary>
+            Enumerates kinds of driver identification sensors.
+            </summary>
+        </member>
+        <member name="F:Telemax.Shared.ClientDb.Entities.DriverIdSensorRecord.SensorMechanism.General">
+            <summary>
+            General type, reports just the fact of identification (without any data).
+            </summary>
+        </member>
+        <member name="F:Telemax.Shared.ClientDb.Entities.DriverIdSensorRecord.SensorMechanism.Fingerprint">
+            <summary>
+            Fingerprint reader.
+            </summary>
+        </member>
+        <member name="F:Telemax.Shared.ClientDb.Entities.DriverIdSensorRecord.SensorMechanism.Rfid">
+            <summary>
+            RFID (radio-frequency identification) reader.
+            </summary>
+        </member>
+        <member name="T:Telemax.Shared.ClientDb.Entities.EnvironmentSensorRecord">
+            <summary>
+            Represents environment sensor record.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.EnvironmentSensorRecord.Humidity">
+            <summary>
+            Gets or sets the humidity level, percents.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.EnvironmentSensorRecord.Temperature">
+            <summary>
+            Gets or sets the temperature near the sensor, °C.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.EnvironmentSensorRecord.IsLightOn">
+            <summary>
+            Gets or sets the flag which determines if the light is on.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.EnvironmentSensorRecord.LightIntensity">
+            <summary>
+            Gets or sets the light intensity, percents.
+            </summary>
+        </member>
+        <member name="T:Telemax.Shared.ClientDb.Entities.LevelSensorRecord">
+            <summary>
+            Represents (liquid) level sensor.
+            Used to measure diesel/petrol/water levels within the corresponding tanks.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.LevelSensorRecord.Mechanism">
+            <summary>
+            Gets or sets sensor's internal mechanism.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.LevelSensorRecord.RemainingPercentage">
+            <summary>
+            Gets or sets the amount of remaining liquid, percents.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.LevelSensorRecord.State">
+            <summary>
+            Gets or sets the tank state.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.LevelSensorRecord.RemainingHeight">
+            <summary>
+            Gets or sets the height of the remaining liquid, millimeters.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.LevelSensorRecord.TotalHeight">
+            <summary>
+            Gets or sets total tank height, millimeters.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.LevelSensorRecord.Temperature">
+            <summary>
+            Gets liquid temperature, °C.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.LevelSensorRecord.Liquid">
+            <summary>
+            Gets or sets the type of the liquid within a tank.
+            </summary>
+        </member>
+        <member name="T:Telemax.Shared.ClientDb.Entities.LevelSensorRecord.SensorMechanism">
+            <summary>
+            Enumerates kinds of level sensors.
+            </summary>
+        </member>
+        <member name="F:Telemax.Shared.ClientDb.Entities.LevelSensorRecord.SensorMechanism.Capacitor">
+            <summary>
+            Capacitor level sensor, provides relative liquid level (percents).
+            </summary>
+        </member>
+        <member name="F:Telemax.Shared.ClientDb.Entities.LevelSensorRecord.SensorMechanism.Ultrasonic">
+            <summary>
+            Ultrasonic level sensor, provides absolute liquid level (millimeters).
+            </summary>
+        </member>
+        <member name="T:Telemax.Shared.ClientDb.Entities.LevelSensorRecord.LiquidType">
+            <summary>
+            Enumerates types of the liquids.
+            </summary>
+        </member>
+        <member name="F:Telemax.Shared.ClientDb.Entities.LevelSensorRecord.LiquidType.Diesel">
+            <summary>
+            Diesel.
+            </summary>
+        </member>
+        <member name="F:Telemax.Shared.ClientDb.Entities.LevelSensorRecord.LiquidType.Petrol">
+            <summary>
+            Petrol (gasoline).
+            </summary>
+        </member>
+        <member name="F:Telemax.Shared.ClientDb.Entities.LevelSensorRecord.LiquidType.Water">
+            <summary>
+            Water.
+            </summary>
+        </member>
+        <member name="T:Telemax.Shared.ClientDb.Entities.LevelSensorRecord.TankState">
+            <summary>
+            Enumerates tank states.
+            </summary>
+        </member>
+        <member name="F:Telemax.Shared.ClientDb.Entities.LevelSensorRecord.TankState.Normal">
+            <summary>
+            Normal state.
+            </summary>
+        </member>
+        <member name="F:Telemax.Shared.ClientDb.Entities.LevelSensorRecord.TankState.Filling">
+            <summary>
+            Tank is filling.
+            </summary>
+        </member>
+        <member name="F:Telemax.Shared.ClientDb.Entities.LevelSensorRecord.TankState.Leaking">
+            <summary>
+            Tank is leaking.
+            </summary>
+        </member>
+        <member name="T:Telemax.Shared.ClientDb.Entities.RelaySensorRecord">
+            <summary>
+            Represents relay sensor record.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.RelaySensorRecord.IsOn">
+            <summary>
+            Gets or sets the flag which determines if the relay is ON.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.RelaySensorRecord.Temperature">
+            <summary>
+            Gets or sets the temperature near the sensor, °C.
+            </summary>
+        </member>
+        <member name="T:Telemax.Shared.ClientDb.Entities.SosSensorRecord">
+            <summary>
+            Represents SOS sensor record.
+            </summary>
+        </member>
+        <member name="T:Telemax.Shared.ClientDb.Entities.TireSensorRecord">
+            <summary>
+            Represents tire sensor record.
+            These sensors used to monitor state of the tires (like air pressure and air temperature).
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.TireSensorRecord.Pressure">
+            <summary>
+            Gets or sets the air pressure within a tire, Pa.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.TireSensorRecord.Temperature">
+            <summary>
+            Gets or sets the air temperature within a tire, °C.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.TireSensorRecord.Status">
+            <summary>
+            Gets or sets the wheel status.
+            </summary>
+        </member>
+        <member name="T:Telemax.Shared.ClientDb.Entities.TireSensorRecord.WheelStatus">
+            <summary>
+            Enumerates wheel statuses.
+            </summary>
+        </member>
+        <member name="F:Telemax.Shared.ClientDb.Entities.TireSensorRecord.WheelStatus.Normal">
+            <summary>
+            Normal.
+            </summary>
+        </member>
+        <member name="F:Telemax.Shared.ClientDb.Entities.TireSensorRecord.WheelStatus.Leaking">
+            <summary>
+            Wheel is leaking.
+            </summary>
+        </member>
+        <member name="F:Telemax.Shared.ClientDb.Entities.TireSensorRecord.WheelStatus.Refilling">
+            <summary>
+            Wheel is refilling.
+            </summary>
+        </member>
+        <member name="F:Telemax.Shared.ClientDb.Entities.TireSensorRecord.WheelStatus.Rolling">
+            <summary>
+            Wheel is rolling.
+            </summary>
+        </member>
+        <member name="T:Telemax.Shared.ClientDb.Entities.TrackerRecord">
+            <summary>
+            Represents abstract tracking data record.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.TrackerRecord.TrackerId">
+            <summary>
+            Gets or sets the ID of the tracker which generated this record.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.TrackerRecord.TrackerDate">
+            <summary>
+            Gets or sets a moment in time (UTC) when the record was retrieved by the tracker.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.TrackerRecord.VehicleId">
+            <summary>
+            Gets or sets the ID of the vehicle the tracker was installed on while generating this data record.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.TrackerRecord.RouteSegmentStartDate">
+            <summary>
+            Gets or sets the start date of the corresponding <see cref="T:Telemax.Shared.ClientDb.Entities.RouteSegment"/>.
+            Used to retrieve the corresponding route segment (using both <see cref="P:Telemax.Shared.ClientDb.Entities.TrackerRecord.TrackerId"/> and <see cref="P:Telemax.Shared.ClientDb.Entities.TrackerRecord.RouteSegmentStartDate"/>).
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.TrackerRecord.Tracker">
+            <summary>
+            Gets or sets the tracker which generated this data record.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.TrackerRecord.Vehicle">
+            <summary>
+            Gets or sets the vehicle the tracker was installed on while generating this data record.
+            </summary>
+        </member>
+        <member name="T:Telemax.Shared.ClientDb.Entities.CommonTrackerRecord">
+            <summary>
+            Represents tracker data record which stores location-related data.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.CommonTrackerRecord.IsEngineStarted">
+            <summary>
+            Gets or sets the flag which determines if the engine is started.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.CommonTrackerRecord.IsEngineLocked">
+            <summary>
+            Gets or sets the flag which determines if the engine is locked.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.CommonTrackerRecord.EngineTime">
+            <summary>
+            Gets or sets the total engine time.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.CommonTrackerRecord.IdleTime">
+            <summary>
+            Gets or sets the amount of time the vehicle was not moving with the started engine.
+            TODO: Still can't understand how we will calculate this, I think it should be part of the trip.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.CommonTrackerRecord.NetworkSignalStrength">
+            <summary>
+            Gets or sets the network signal strength, percents.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.CommonTrackerRecord.Odometer">
+            <summary>
+            Gets or sets the odometer value, meters.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.CommonTrackerRecord.InternalBatteryVoltage">
+            <summary>
+            Gets or sets the internal battery voltage, volts.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.CommonTrackerRecord.ExternalBatteryVoltage">
+            <summary>
+            Gets or sets the external battery voltage, volts.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.CommonTrackerRecord.Route">
+            <summary>
+            Gets or sets the route-related data (position, direction, speed).
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.CommonTrackerRecord.GpsInfo">
+            <summary>
+            Gets or sets the GPS-related data.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.CommonTrackerRecord.Accelerometer">
+            <summary>
+            Gets or sets the accelerometer data.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.CommonTrackerRecord.Gyroscope">
+            <summary>
+            Gets or sets the gyroscope data.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.CommonTrackerRecord.SolarPanel">
+            <summary>
+            Gets or sets the solar panel data.
+            </summary>
+        </member>
+        <member name="T:Telemax.Shared.ClientDb.Entities.CommonTrackerRecord.RouteData">
+            <summary>
+            Represents route-related data.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.CommonTrackerRecord.RouteData.Location">
+            <summary>
+            Gets or sets the GPS location.
+            X stands for longitude in range [-180, 180].
+            Y stands for latitude in range [-90, 90].
+            Z (optional) stands for altitude (meters).
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.CommonTrackerRecord.RouteData.Direction">
+            <summary>
+            Gets or sets the movement direction as the CW angle (degrees) from the meridian line (0 - north, 90 - east, 180 - south, 270 - west).
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.CommonTrackerRecord.RouteData.Speed">
+            <summary>
+            Gets or sets the moving speed, km/h.
+            </summary>
+        </member>
+        <member name="T:Telemax.Shared.ClientDb.Entities.CommonTrackerRecord.GpsInfoData">
+            <summary>
+            Represents GPS-related information.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.CommonTrackerRecord.GpsInfoData.IsInWorkingMode">
+            <summary>
+            Gets or sets the flag which determines if GPS was in working or sleeping mode.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.CommonTrackerRecord.GpsInfoData.SatellitesCount">
+            <summary>
+            Gets or sets the amount of satellites the tracker was connected to.
+            </summary>
+        </member>
+        <member name="T:Telemax.Shared.ClientDb.Entities.CommonTrackerRecord.AccelerometerData">
+            <summary>
+            Represents accelerometer vector.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.CommonTrackerRecord.AccelerometerData.X">
+            <summary>
+            Gets or sets the X axis acceleration, g.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.CommonTrackerRecord.AccelerometerData.Y">
+            <summary>
+            Gets or sets the Y axis acceleration, g.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.CommonTrackerRecord.AccelerometerData.Z">
+            <summary>
+            Gets or sets the Z axis acceleration, g.
+            </summary>
+        </member>
+        <member name="T:Telemax.Shared.ClientDb.Entities.CommonTrackerRecord.GyroscopeData">
+            <summary>
+            Represents gyroscope vector.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.CommonTrackerRecord.GyroscopeData.X">
+            <summary>
+            Gets or sets the X axis rotation speed, dps.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.CommonTrackerRecord.GyroscopeData.Y">
+            <summary>
+            Gets or sets the Y axis rotation speed, dps.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.CommonTrackerRecord.GyroscopeData.Z">
+            <summary>
+            Gets or sets the Z axis rotation speed, dps.
+            </summary>
+        </member>
+        <member name="T:Telemax.Shared.ClientDb.Entities.CommonTrackerRecord.SolarPanelData">
+            <summary>
+            Represents solar panel data.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.CommonTrackerRecord.SolarPanelData.Voltage">
+            <summary>
+            Gets or sets the solar panel voltage (volts).
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.CommonTrackerRecord.SolarPanelData.IsCharging">
+            <summary>
+            Gets or sets the flag which determines if the solar panel charges the device battery.
+            </summary>
+        </member>
+        <member name="T:Telemax.Shared.ClientDb.Entities.DeviceInfoTrackerRecord">
+            <summary>
+            Represents tracker device information.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.DeviceInfoTrackerRecord.Protocol">
+            <summary>
+            Gets or sets the protocol used to communicate with the tracker.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.DeviceInfoTrackerRecord.Device">
+            <summary>
+            Gets or sets device version info.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.DeviceInfoTrackerRecord.Controller">
+            <summary>
+            Gets or sets MCU (micro controller unit) version info.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.DeviceInfoTrackerRecord.Modem">
+            <summary>
+            Gets or sets model version info.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.DeviceInfoTrackerRecord.Obd2">
+            <summary>
+            Gets or sets OBD-II module version info.
+            </summary>
+        </member>
+        <member name="T:Telemax.Shared.ClientDb.Entities.DeviceInfoTrackerRecord.UnitVersions">
+            <summary>
+            Represents list of version of some hardware unit.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.DeviceInfoTrackerRecord.UnitVersions.Hardware">
+            <summary>
+            Gets or sets the hardware version.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.DeviceInfoTrackerRecord.UnitVersions.Platform">
+            <summary>
+            Gets or sets the platform version.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.DeviceInfoTrackerRecord.UnitVersions.Firmware">
+            <summary>
+            Gets or sets the firmware version.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.DeviceInfoTrackerRecord.UnitVersions.Software">
+            <summary>
+            Gets or sets the software version.
+            </summary>
+        </member>
+        <member name="T:Telemax.Shared.ClientDb.Entities.DtcTrackerRecord">
+            <summary>
+            Represents tracker data record which stores DTC codes.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.DtcTrackerRecord.Codes">
+            <summary>
+            Gets or sets the comma-separated DTC codes.
+            </summary>
+        </member>
+        <member name="T:Telemax.Shared.ClientDb.Entities.NetworkInfoTrackerRecord">
+            <summary>
+            Represents tracker mobile network information.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.NetworkInfoTrackerRecord.Operator">
+            <summary>
+            Gets or sets the mobile network operator name.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.NetworkInfoTrackerRecord.Technology">
+            <summary>
+            Gets or sets the mobile network access technology name (GSM, EDGE, etc...).
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.NetworkInfoTrackerRecord.Band">
+            <summary>
+            Gets or sets the mobile network band name (GSM 850, LTE BAND 28, etc...).
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.NetworkInfoTrackerRecord.Imsi">
+            <summary>
+            Gets or sets the IMSI (international mobile subscriber identity) number.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.NetworkInfoTrackerRecord.IccId">
+            <summary>
+            Gets or sets the ICCID (integrated circuit card identifier).
+            </summary>
+        </member>
+        <member name="T:Telemax.Shared.ClientDb.Entities.User">
+            <summary>
+            Represents the user.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.User.IsActive">
+            <summary>
+            Gets or sets the flag which determines if the user is active.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.User.IsDeleted">
+            <summary>
+            Gets or sets the flag which determines if the user has been deleted.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.User.CompanyUsers">
+            <summary>
+            Gets or sets the list of connections between the user and related companies.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.User.AlertPolicies">
+            <summary>
+            Gets or sets the list alert policies for the user.
+            </summary>
+        </member>
+        <member name="T:Telemax.Shared.ClientDb.Entities.Vehicle">
+            <summary>
+            Represents vehicle.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.Vehicle.Id">
+            <summary>
+            Gets or sets the unique vehicle ID.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.Vehicle.Name">
+            <summary>
+            Gets or sets the user-defined vehicle name.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.Vehicle.NumberPlate">
+            <summary>
+            Gets or sets the user-defined vehicle number plate.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.Vehicle.Vin">
+            <summary>
+            Gets or sets the vehicle Identification Number (VIN).
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.Vehicle.IsDeleted">
+            <summary>
+            Gets or sets the flag which determines if vehicle is deleted.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.Vehicle.Tracker">
+            <summary>
+            Gets or sets the tracker which is currently installed on the vehicle.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.Vehicle.AlertPolicies">
+            <summary>
+            Gets or sets the list of connections between the vehicle and the alert policies applied for this vehicle.
+            </summary>
+        </member>
+        <member name="P:Telemax.Shared.ClientDb.Entities.Vehicle.Alerts">
+            <summary>
+            Gets or sets the list of alerts caused by this vehicle.
+            </summary>
+        </member>
+    </members>
+</doc>
